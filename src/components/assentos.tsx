@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Pressable } from 'react-native';
 import { styles } from '../styles/styles';
+import { AssentosProps } from '../navigation/HomeNavigator';
+
 
 interface Filme {
   nome: string;
@@ -18,7 +20,7 @@ const linhas = 6;
 const colunas = 8;
 const assentosOcupados = [27, 28, 19, 20, 10, 11, 44, 45, 46];
 
-interface SelecionarAssentosProps {}
+interface SelecionarAssentosProps { }
 
 interface RenderizarAssentoProps {
   item: number;
@@ -27,6 +29,7 @@ interface RenderizarAssentoProps {
 function SelecionarAssentos(props: SelecionarAssentosProps) {
   const [filmeSelecionado, setFilmeSelecionado] = useState<Filme>(filmes[0]);
   const [assentosSelecionados, setAssentosSelecionados] = useState<number[]>([]);
+
 
   function alternarAssento(index: number) {
     if (assentosOcupados.includes(index)) return;
@@ -80,6 +83,10 @@ function SelecionarAssentos(props: SelecionarAssentosProps) {
         numColumns={colunas}
         scrollEnabled={false}
       />
+      <Pressable>
+        
+        <Text style={styles.texto_botao}>Selecionar Assentos</Text>
+      </Pressable>
 
       <Text style={styles.resumo}>
         Você selecionou <Text style={styles.destaque}>{assentosSelecionados.length}</Text> assento(s)

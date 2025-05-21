@@ -4,15 +4,18 @@ import { PrincipalProps } from '../navigation/HomeNavigator';
 import { styles } from '../styles/styles';
 
 const TelaPrincipal = (props: PrincipalProps) => {
-  return (
+    return (
     <View style={styles.tela}>
+
+  
+        <Text style={styles.titulo}>Bem Vindo </Text>
+      
+
       <Pressable
-        style={({ pressed }) => [styles.botaoEntrar, pressed && styles.click]}
-        onPress={() => {
-          props.navigation.navigate('Inicio');
-        }}
+        style={styles.botaoEntrar}
+        onPress={() => props.navigation.navigate('assentos')}
       >
-        <Text style={styles.texto_botao}>Início</Text>
+        <Text style={styles.botaoEntrar}>Cadastrar </Text>
       </Pressable>
     </View>
   );

@@ -1,13 +1,17 @@
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import TelaPrincipal from "../layouts/TelaPrincipal";
-import Inicio from "../components/Inicio";
+import TelaInicio from "../layouts/TelaInicio";
 import SelecionarAssentos from "../components/assentos";
+import CadastroFilme from "../components/cadastroFilme";
+import Pagamento from "../components/Pagamento";
+import TelaEscolherFilme from "../layouts/TelaEscolherFilme";
 
 //Define quais as telas e os parâmetros de cada tela
 type RootStackParamList = {
   TelaPrincipal: undefined;
-  Inicio: undefined;
+  TelaInicio: undefined;
   assentos: undefined;
+  TelaEscolherFilme: undefined;
 
 };
 
@@ -19,17 +23,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const HomeNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Inicio" //nome da tela inicial
+      initialRouteName="TelaEscolherFilme" //nome da tela inicial
       screenOptions={{ headerShown: false }} //headerShown define se o cabeçalho irá ser exibido
     >
 
       {/* define uma tela dando um nome(igual ao RootStackParamList) e qual o componente será carregado */}
       <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
-      <Stack.Screen name="Inicio" component={Inicio} />
+      <Stack.Screen name="TelaInicio" component={TelaInicio} />
       <Stack.Screen name="assentos" component={SelecionarAssentos} />
-
-
-
+      <Stack.Screen name="TelaEscolherFilme" component={TelaEscolherFilme} />
 
     </Stack.Navigator>
   );
@@ -41,10 +43,13 @@ type PrincipalProps = NativeStackScreenProps<RootStackParamList,
   'TelaPrincipal'>;
 
 type InicioProps = NativeStackScreenProps<RootStackParamList,
-  'Inicio'>;
+  'TelaInicio'>;
 
 type AssentosProps = NativeStackScreenProps<RootStackParamList,
   'assentos'>;
+
+type EscolherFilmeProps = NativeStackScreenProps<RootStackParamList,
+  'TelaEscolherFilme'>;
 
 
 
@@ -55,5 +60,6 @@ export default HomeNavigator;
 export type {
   PrincipalProps,
   InicioProps,
-  AssentosProps
+  AssentosProps,
+  EscolherFilmeProps
 };
